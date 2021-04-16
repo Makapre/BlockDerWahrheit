@@ -2,7 +2,7 @@ import 'package:blockderwahrheit/game.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SetRounds extends StatelessWidget {
+class SetPlayerNames extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var game = context.watch<Game>();
@@ -16,14 +16,8 @@ class SetRounds extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(game.actualRound.toString()),
-            FloatingActionButton.extended(
-              onPressed: () =>
-                  {game.reset(), Navigator.popAndPushNamed(context, '/')},
-              tooltip: 'Zum Startbidlschirm',
-              label: Text("Startbidlschirm",
-                  style: Theme.of(context).textTheme.button),
-            ),
+            Text(game.players.toString()),
+            // todo Enter player names
           ],
         ),
       ),

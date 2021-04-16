@@ -1,6 +1,7 @@
+import 'package:blockderwahrheit/screens/setPlayernames.dart';
 import 'package:flutter/material.dart';
 import 'screens/overview.dart';
-import 'screens/setRounds.dart';
+import 'screens/setNumberOfPlayers.dart';
 import 'game.dart';
 import 'package:provider/provider.dart';
 
@@ -33,7 +34,8 @@ class MyApp extends StatelessWidget {
           initialRoute: '/',
           routes: {
             '/': (context) => Overview(title: 'Block der Wahrheit'),
-            '/setRounds': (context) => SetRounds(),
+            '/setNumberOfPlayers': (context) => SetNumberOfPlayers(),
+            '/setPlayerNames': (context) => SetPlayerNames(),
           },
         ));
   }

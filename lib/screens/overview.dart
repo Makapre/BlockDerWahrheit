@@ -23,7 +23,7 @@ class _OverviewState extends State<Overview> {
           children: <Widget>[
             FloatingActionButton.extended(
                 onPressed: () =>
-                    Navigator.popAndPushNamed(context, '/setRounds'),
+                    Navigator.popAndPushNamed(context, '/setNumberOfPlayers'),
                 tooltip: 'Starte das Spiel',
                 label: Text("Start", style: Theme.of(context).textTheme.button))
           ],
