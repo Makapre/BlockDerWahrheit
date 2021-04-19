@@ -4,6 +4,7 @@ import 'screens/overview.dart';
 import 'screens/setNumberOfPlayers.dart';
 import 'game.dart';
 import 'package:provider/provider.dart';
+import 'screens/gameboard.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
             '/': (context) => Overview(title: 'Block der Wahrheit'),
             '/setNumberOfPlayers': (context) => SetNumberOfPlayers(),
             '/setPlayerNames': (context) => SetPlayerNames(),
+            '/gameboard': (context) => Gameboard(),
           },
         ));
   }
