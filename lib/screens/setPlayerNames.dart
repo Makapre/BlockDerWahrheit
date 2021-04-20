@@ -10,11 +10,18 @@ class SetPlayerNames extends StatelessWidget {
     var game = context.watch<Game>();
     const paddingVertical = EdgeInsets.symmetric(vertical: 16.0);
     const paddingHorizontal = EdgeInsets.symmetric(horizontal: 16.0);
+    final node = FocusScope.of(context);
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Spielernamen eintragen',
             style: Theme.of(context).textTheme.subtitle1),
+        leading: GestureDetector(
+          onTap: () => Navigator.popAndPushNamed(context, '/'),
+          child: Icon(
+            Icons.autorenew, // add custom icons also
+          ),
+        ),
       ),
       body: Center(
         child: Form(
@@ -36,6 +43,7 @@ class SetPlayerNames extends StatelessWidget {
                         return null;
                       },
                       onSaved: (value) => game.setPlayer(value),
+                      onEditingComplete: () => node.nextFocus(),
                     )),
               Padding(
                 padding: paddingVertical,

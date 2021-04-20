@@ -25,13 +25,22 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             // This is the theme of your application.
-            primarySwatch: Colors.red,
+            primarySwatch: Colors.amber,
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
+          // darkTheme: ThemeData(
+          //   brightness: Brightness.dark,
+          //   visualDensity: VisualDensity.adaptivePlatformDensity,
+          // ),
           darkTheme: ThemeData(
-            brightness: Brightness.dark,
-            primarySwatch: Colors.green,
-          ),
+              primaryColor: Colors.blueAccent,
+              primaryColorBrightness: Brightness.light,
+              primaryColorLight: Colors.blueAccent,
+              primaryColorDark: Colors.blueAccent,
+              indicatorColor: Colors.blueAccent,
+              canvasColor: Colors.white,
+              // next line is important!
+              appBarTheme: AppBarTheme(brightness: Brightness.dark)),
           initialRoute: '/',
           routes: {
             '/': (context) => Overview(title: 'Block der Wahrheit'),
