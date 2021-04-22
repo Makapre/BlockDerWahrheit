@@ -93,25 +93,13 @@ class Gameboard extends StatelessWidget {
               ),
             ),
           ),
-          body: SingleChildScrollView(
+          body: SafeArea(
             child: Center(
                 child: Column(children: <Widget>[
-              Container(
-                margin: EdgeInsets.all(20),
-                child: Table(
-                  children: [
-                    TableRow(children: [
-                      for (var i = 0; i < game.numberOfPlayers; i++)
-                        Column(children: [
-                          Text(game.players[i],
-                              style: TextStyle(fontSize: 20.0)),
-                          Text(game.scoreboard[i].toString()),
-                        ])
-                    ]),
-                  ],
-                ),
+              Text(
+                "Aktuelle Runde: ${game.actualRound.toString()}",
+                style: Theme.of(context).textTheme.headline4,
               ),
-              Text("Vorhersage"),
               Container(
                 margin: EdgeInsets.all(20),
                 child: Form(
@@ -123,9 +111,20 @@ class Gameboard extends StatelessWidget {
                         Padding(
                             padding: paddingHorizontal,
                             child: Column(children: [
-                              Text(
-                                game.players[i],
-                                style: Theme.of(context).textTheme.headline5,
+                              Row(
+                                children: [
+                                  Text(
+                                    game.players[i],
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
+                                  ),
+                                  Spacer(),
+                                  Text(
+                                    game.scoreboard[i].toString(),
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
+                                  ),
+                                ],
                               ),
                               TextFormField(
                                 decoration: const InputDecoration(
@@ -144,7 +143,7 @@ class Gameboard extends StatelessWidget {
                                 ],
                                 onSaved: (value) =>
                                     game.savePrediction(int.parse(value!), i),
-                              )
+                              ),
                             ])),
                       Padding(
                           padding: paddingVertical,
@@ -166,7 +165,6 @@ class Gameboard extends StatelessWidget {
                   ),
                 ),
               ),
-              Text("Aktuelle Runde: ${game.actualRound.toString()}"),
             ])),
           ));
     }
