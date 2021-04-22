@@ -46,7 +46,6 @@ class Game extends ChangeNotifier {
     _actualRound = 1;
     _scoreboard = [0, 0, 0];
     _results = [0, 0, 0];
-    notifyListeners();
   }
 
   void savePrediction(int value, int index) {

@@ -13,13 +13,20 @@ class Gameboard extends StatelessWidget {
     const paddingHorizontal = EdgeInsets.symmetric(horizontal: 16.0);
     const paddingVertical = EdgeInsets.symmetric(vertical: 16.0);
 
+    bool isFinished() {
+      // ! for testing
+      // return game.actualRound > 1;
+      return game.actualRound > game.rounds;
+    }
+
     void _showApplyRoundDialog() {
       showDialog(
         barrierDismissible: true,
         context: context,
         builder: (BuildContext context) {
           return SimpleDialog(
-              title: Text('Ergebnisse der Runde eintragen'),
+              title:
+                  Text('Ergebnisse Runde ${game.actualRound}/${game.rounds}'),
               children: <Widget>[
                 Form(
                   key: _formKeyResult,
@@ -67,7 +74,7 @@ class Gameboard extends StatelessWidget {
                                 }
                               },
                               tooltip: 'Gib das Ergebnis der Runde ein',
-                              label: Text("Nächste Runde",
+                              label: Text("Ergebnisse eintragen",
                                   style: Theme.of(context).textTheme.button)))
                     ],
                   ),
@@ -87,17 +94,20 @@ class Gameboard extends StatelessWidget {
             title:
                 Text('Game on', style: Theme.of(context).textTheme.subtitle1),
             leading: GestureDetector(
-              onTap: () => Navigator.popAndPushNamed(context, '/'),
+              onTap: () {
+                game.reset();
+                Navigator.popAndPushNamed(context, '/');
+              },
               child: Icon(
                 Icons.autorenew, // add custom icons also
               ),
             ),
           ),
-          body: SafeArea(
+          body: SingleChildScrollView(
             child: Center(
                 child: Column(children: <Widget>[
               Text(
-                "Aktuelle Runde: ${game.actualRound.toString()}",
+                "Aktuelle Runde: ${game.actualRound}/${game.rounds}",
                 style: Theme.of(context).textTheme.headline4,
               ),
               Container(
@@ -120,7 +130,7 @@ class Gameboard extends StatelessWidget {
                                   ),
                                   Spacer(),
                                   Text(
-                                    game.scoreboard[i].toString(),
+                                    game.scoreboard[i].toString() + ' Punkte',
                                     style:
                                         Theme.of(context).textTheme.headline5,
                                   ),
@@ -174,12 +184,6 @@ class Gameboard extends StatelessWidget {
         appBar: AppBar(
           title: Text('Spiel ist Ende',
               style: Theme.of(context).textTheme.subtitle1),
-          leading: GestureDetector(
-            onTap: () => Navigator.popAndPushNamed(context, '/'),
-            child: Icon(
-              Icons.autorenew, // add custom icons also
-            ),
-          ),
         ),
         body: Center(
           child: Column(
@@ -189,23 +193,15 @@ class Gameboard extends StatelessWidget {
                 "Endstand",
                 style: Theme.of(context).textTheme.headline2,
               ),
-              Container(
-                margin: EdgeInsets.all(20),
-                child: Table(
-                  children: [
-                    TableRow(children: [
-                      for (var i = 0; i < game.numberOfPlayers; i++)
-                        Column(children: [
-                          Text(game.players[i],
-                              style: Theme.of(context).textTheme.headline3),
-                          Text(game.scoreboard[i].toString()),
-                        ])
-                    ]),
-                  ],
-                ),
-              ),
+              for (var i = 0; i < game.numberOfPlayers; i++)
+                Column(children: [
+                  Text(game.players[i],
+                      style: Theme.of(context).textTheme.headline3),
+                  Text(game.scoreboard[i].toString()),
+                ]),
               FloatingActionButton.extended(
                 onPressed: () {
+                  game.reset();
                   Navigator.popAndPushNamed(context, '/');
                 },
                 tooltip: 'neues Spiel',
@@ -218,8 +214,6 @@ class Gameboard extends StatelessWidget {
       );
     }
 
-    // ! for testing
-    // return game.actualRound == 2 ? gameFinished() : inGame();
-    return game.actualRound > game.rounds ? gameFinished() : inGame();
+    return isFinished() ? gameFinished() : inGame();
   }
 }

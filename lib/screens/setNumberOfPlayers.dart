@@ -6,18 +6,11 @@ class SetNumberOfPlayers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var game = context.watch<Game>();
-    // game.reset();
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Wie viele Teilnehmer werden spielen?',
             style: Theme.of(context).textTheme.subtitle1),
-        leading: GestureDetector(
-          onTap: () => Navigator.popAndPushNamed(context, '/'),
-          child: Icon(
-            Icons.autorenew, // add custom icons also
-          ),
-        ),
       ),
       body: Center(
         child: Column(
