@@ -39,7 +39,7 @@ class Gameboard extends StatelessWidget {
                             child: Column(children: [
                               Text(
                                 "${game.players[i]} - ${game.prediction[i]}",
-                                style: Theme.of(context).textTheme.headline5,
+                                style: Theme.of(context).textTheme.headlineSmall,
                               ),
                               TextFormField(
                                 decoration: const InputDecoration(
@@ -75,7 +75,7 @@ class Gameboard extends StatelessWidget {
                               },
                               tooltip: 'Gib das Ergebnis der Runde ein',
                               label: Text("Ergebnisse eintragen",
-                                  style: Theme.of(context).textTheme.button)))
+                                  style: Theme.of(context).textTheme.labelLarge)))
                     ],
                   ),
                 ),
@@ -92,7 +92,7 @@ class Gameboard extends StatelessWidget {
       return Scaffold(
           appBar: AppBar(
             title:
-                Text('Game on', style: Theme.of(context).textTheme.subtitle1),
+                Text('Game on', style: Theme.of(context).textTheme.titleMedium),
             leading: GestureDetector(
               onTap: () {
                 game.reset();
@@ -108,7 +108,7 @@ class Gameboard extends StatelessWidget {
                 child: Column(children: <Widget>[
               Text(
                 "Aktuelle Runde: ${game.actualRound}/${game.rounds}",
-                style: Theme.of(context).textTheme.headline4,
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
               Container(
                 margin: EdgeInsets.all(20),
@@ -126,13 +126,13 @@ class Gameboard extends StatelessWidget {
                                   Text(
                                     game.players[i],
                                     style:
-                                        Theme.of(context).textTheme.headline5,
+                                        Theme.of(context).textTheme.headlineSmall,
                                   ),
                                   Spacer(),
                                   Text(
                                     game.scoreboard[i].toString() + ' Punkte',
                                     style:
-                                        Theme.of(context).textTheme.headline5,
+                                        Theme.of(context).textTheme.headlineSmall,
                                   ),
                                 ],
                               ),
@@ -170,7 +170,7 @@ class Gameboard extends StatelessWidget {
                               },
                               tooltip: 'Runde gespielt',
                               label: Text("Runde gespielt",
-                                  style: Theme.of(context).textTheme.button))),
+                                  style: Theme.of(context).textTheme.labelLarge))),
                     ],
                   ),
                 ),
@@ -183,7 +183,7 @@ class Gameboard extends StatelessWidget {
       return Scaffold(
         appBar: AppBar(
           title: Text('Spiel ist Ende',
-              style: Theme.of(context).textTheme.subtitle1),
+              style: Theme.of(context).textTheme.titleMedium),
         ),
         body: Center(
           child: Column(
@@ -191,12 +191,12 @@ class Gameboard extends StatelessWidget {
             children: [
               Text(
                 "Endstand",
-                style: Theme.of(context).textTheme.headline2,
+                style: Theme.of(context).textTheme.displayMedium,
               ),
               for (var i = 0; i < game.numberOfPlayers; i++)
                 Column(children: [
                   Text(game.players[i],
-                      style: Theme.of(context).textTheme.headline3),
+                      style: Theme.of(context).textTheme.displaySmall),
                   Text(game.scoreboard[i].toString()),
                 ]),
               FloatingActionButton.extended(
@@ -206,7 +206,7 @@ class Gameboard extends StatelessWidget {
                 },
                 tooltip: 'neues Spiel',
                 label: Text("neues Spiel",
-                    style: Theme.of(context).textTheme.button),
+                    style: Theme.of(context).textTheme.labelLarge),
               )
             ],
           ),

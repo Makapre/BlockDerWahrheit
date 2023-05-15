@@ -6,7 +6,7 @@ class Overview extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Block der Wahrheit',
-            style: Theme.of(context).textTheme.subtitle1),
+            style: Theme.of(context).textTheme.titleMedium),
       ),
       body: Center(
         child: Column(
@@ -24,7 +24,7 @@ class Overview extends StatelessWidget {
                     Navigator.popAndPushNamed(context, '/setNumberOfPlayers'),
                 tooltip: 'Neues Spiel starten',
                 label: Text("Neues Spiel",
-                    style: Theme.of(context).textTheme.button)),
+                    style: Theme.of(context).textTheme.labelLarge)),
             Spacer()
           ],
         ),

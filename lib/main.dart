@@ -35,13 +35,12 @@ class MyApp extends StatelessWidget {
           ),
           darkTheme: ThemeData(
               primaryColor: Colors.blueAccent,
-              primaryColorBrightness: Brightness.light,
               primaryColorLight: Colors.blueAccent,
               primaryColorDark: Colors.blueAccent,
               indicatorColor: Colors.blueAccent,
-              canvasColor: Colors.white,
+              canvasColor: Colors.grey,
               // next line is important!
-              appBarTheme: AppBarTheme(brightness: Brightness.dark)),
+              appBarTheme: AppBarTheme(systemOverlayStyle: SystemUiOverlayStyle.dark)),
           initialRoute: '/',
           routes: {
             '/': (context) => Overview(),

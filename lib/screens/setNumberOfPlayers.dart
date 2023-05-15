@@ -12,7 +12,7 @@ class SetNumberOfPlayers extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Wie viele Teilnehmer werden spielen?',
-            style: Theme.of(context).textTheme.subtitle1),
+            style: Theme.of(context).textTheme.titleMedium),
       ),
       body: Center(
         child: Column(
@@ -34,7 +34,7 @@ class SetNumberOfPlayers extends StatelessWidget {
                                   context, '/setPlayerNames'),
                               tooltip: '3 Spieler',
                               label: Text("3",
-                                  style: Theme.of(context).textTheme.button),
+                                  style: Theme.of(context).textTheme.labelLarge),
                             ))),
                     Padding(
                         padding: paddingHorizontal,
@@ -50,7 +50,7 @@ class SetNumberOfPlayers extends StatelessWidget {
                               },
                               tooltip: '4 Spieler',
                               label: Text("4",
-                                  style: Theme.of(context).textTheme.button),
+                                  style: Theme.of(context).textTheme.labelLarge),
                             ))),
                   ],
                 )),
@@ -74,7 +74,7 @@ class SetNumberOfPlayers extends StatelessWidget {
                               tooltip: '5 Spieler',
                               label: Text(
                                 "5",
-                                style: Theme.of(context).textTheme.button,
+                                style: Theme.of(context).textTheme.labelLarge,
                               ),
                             ))),
                     Padding(
@@ -91,7 +91,7 @@ class SetNumberOfPlayers extends StatelessWidget {
                               },
                               tooltip: '6 Spieler',
                               label: Text("6",
-                                  style: Theme.of(context).textTheme.button),
+                                  style: Theme.of(context).textTheme.labelLarge),
                             ))),
                   ],
                 )),

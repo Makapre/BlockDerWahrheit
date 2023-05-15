@@ -15,7 +15,7 @@ class SetPlayerNames extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Spielernamen eintragen',
-            style: Theme.of(context).textTheme.subtitle1),
+            style: Theme.of(context).textTheme.titleMedium),
       ),
       body: Center(
         child: Form(
